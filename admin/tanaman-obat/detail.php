@@ -27,22 +27,9 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <?php
-                    if (isset($_SESSION['alert'])) {
-                        echo "<script>toastr.success('$_SESSION[alert]')</script>";
-                        unset($_SESSION['alert']);
-                    }
-                    ?>
-
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-900">Data Tanaman Obat</h1>
-                        <a href="tambah" class="btn bg-gradient-primary btn-icon-split">
-                            <span class="icon text-white">
-                                <i class="fas fa-plus"></i>
-                            </span>
-                            <span class="text text-white">Tambah Data</span>
-                        </a>
+                        <h1 class="h3 mb-0 text-gray-800">Data Tanaman Obat</h1>
                     </div>
 
                     <div class="row">
@@ -50,6 +37,17 @@
                         <div class="col-lg-12">
 
                             <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <a href="tambah" class="btn bg-gradient-primary btn-icon-split">
+                                        <span class="icon text-white">
+                                            <i class="fas fa-plus"></i>
+                                        </span>
+                                        <span class="text text-white">Tambah Data</span>
+                                    </a>
+                                    <!-- <a href="#" class="btn bg-gradient-primary text-white">
+                                        <i class="fas fa-plus-square"> Tambah Data</i>
+                                    </a> -->
+                                </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -75,12 +73,16 @@
                                                         <td><?= $row['deskripsi']; ?></td>
                                                         <td><?= $row['indikasi']; ?></td>
                                                         <td align="center">
-                                                            <a href="<?= base_url('assets/gambar-tanaman/' . $row['gambar_tanaman']) ?>" data-lightbox="roadtrip" data-title="<?= $row['gambar_tanaman'] ?>">
-                                                                <img src="<?= base_url('assets/gambar-tanaman/' . $row['gambar_tanaman']) ?>" style="width: 70px; height: 70px;">
-                                                            </a>
+                                                            <img src="<?= base_url('assets/gambar-tanaman/' . $row['gambar_tanaman']) ?>" style="width: 70px; height: 70px;">
                                                         </td>
                                                         <td><?= $row['kelompok']; ?></td>
                                                         <td align="center">
+                                                            <a href="detail?id=<?= $row['id_tanaman'] ?>" class="btn bg-gradient-info btn-sm btn-icon-split">
+                                                                <span class="icon text-white">
+                                                                    <i class="fas fa-info"></i>
+                                                                </span>
+                                                                <span class="text text-white">Detail</span>
+                                                            </a>
                                                             <a href="edit?id=<?= $row['id_tanaman'] ?>" class="btn bg-gradient-success btn-sm btn-icon-split">
                                                                 <span class="icon text-white">
                                                                     <i class="fas fa-edit"></i>

@@ -41,7 +41,7 @@ $data = $koneksi->query("SELECT * FROM tanaman_obat WHERE id_tanaman = '$id'")->
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Edit Data Tanaman Obat</h1>
+                        <h1 class="h3 mb-0 text-gray-900">Edit Data Tanaman Obat</h1>
                         <a href="../tanaman-obat" class="btn bg-gradient-secondary btn-icon-split">
                             <span class="icon text-white">
                                 <i class="fas fa-arrow-left"></i>

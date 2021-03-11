@@ -36,7 +36,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-900">Data Tanaman Obat</h1>
+                        <h1 class="h3 mb-0 text-gray-900">Data Kelompok Tanaman</h1>
                         <a href="tambah" class="btn bg-gradient-primary btn-icon-split">
                             <span class="icon text-white">
                                 <i class="fas fa-plus"></i>
@@ -56,38 +56,26 @@
                                             <thead class="thead-light text-center">
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>Nama Tanaman</th>
-                                                    <th>Deskripsi</th>
-                                                    <th>Indikasi</th>
-                                                    <th>Gambar</th>
-                                                    <th>Kelompok</th>
+                                                    <th>Nama Kelompok Tanaman</th>
                                                     <th>Opsi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $data = $koneksi->query("SELECT * FROM tanaman_obat ORDER BY id_tanaman DESC");
+                                                $data = $koneksi->query("SELECT * FROM kelompok_tanaman ORDER BY id_kelompok DESC");
                                                 foreach ($data as $row) {
                                                 ?>
                                                     <tr>
                                                         <td align="center"><?= $no++; ?></td>
-                                                        <td><?= $row['nama_tanaman']; ?></td>
-                                                        <td><?= $row['deskripsi']; ?></td>
-                                                        <td><?= $row['indikasi']; ?></td>
+                                                        <td><?= $row['nama']; ?></td>
                                                         <td align="center">
-                                                            <a href="<?= base_url('assets/gambar-tanaman/' . $row['gambar_tanaman']) ?>" data-lightbox="roadtrip" data-title="<?= $row['gambar_tanaman'] ?>">
-                                                                <img src="<?= base_url('assets/gambar-tanaman/' . $row['gambar_tanaman']) ?>" style="width: 70px; height: 70px;">
-                                                            </a>
-                                                        </td>
-                                                        <td><?= $row['kelompok']; ?></td>
-                                                        <td align="center">
-                                                            <a href="edit?id=<?= $row['id_tanaman'] ?>" class="btn bg-gradient-success btn-sm btn-icon-split">
+                                                            <a href="edit?id=<?= $row['id_kelompok'] ?>" class="btn bg-gradient-success btn-sm btn-icon-split">
                                                                 <span class="icon text-white">
                                                                     <i class="fas fa-edit"></i>
                                                                 </span>
                                                                 <span class="text text-white">Edit</span>
                                                             </a>
-                                                            <button type="button" class="btn bg-gradient-danger btn-sm btn-icon-split delete" data-link="proses?id=<?= $row['id_tanaman'] ?>" data-name="<?= $row['nama_tanaman'] ?>">
+                                                            <button type="button" class="btn bg-gradient-danger btn-sm btn-icon-split delete" data-link="proses?id=<?= $row['id_kelompok'] ?>" data-name="<?= $row['nama'] ?>">
                                                                 <span class="icon text-white">
                                                                     <i class="fas fa-trash"></i>
                                                                 </span>

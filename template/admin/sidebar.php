@@ -30,6 +30,13 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/kelompok-tanaman') ?>">
+            <i class="fas fa-fw fa-layer-group"></i>
+            <span>Kelompok Tanaman</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/tanaman-obat') ?>">
             <i class="fas fa-fw fa-leaf"></i>
             <span>Tanaman Obat</span>
