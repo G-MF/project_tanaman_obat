@@ -1,6 +1,6 @@
 <!-- Bootstrap core JavaScript-->
-<script src="<?= base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
-<script src="<?= base_url() ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="<?= base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
+<script src="<?= base_url() ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
 
 <!-- Core plugin JavaScript-->
 <script src="<?= base_url() ?>/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -8,9 +8,37 @@
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url() ?>/assets/js/sb-admin-2.min.js"></script>
 
+<!-- Select2 -->
+<script src="<?= base_url() ?>/assets/select2/js/select2.full.min.js"></script>
+
+<!-- Lightbox -->
+<script src="<?= base_url() ?>/assets/lightbox/js/lightbox.js"></script>
+
 <!-- Page level plugins -->
-<script src="<?= base_url() ?>/assets/vendor/chart.js/Chart.min.js"></script>
+<script src="<?= base_url() ?>/assets/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= base_url() ?>/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="<?= base_url() ?>/assets/js/demo/chart-area-demo.js"></script>
-<script src="<?= base_url() ?>/assets/js/demo/chart-pie-demo.js"></script>
+<script src="<?= base_url() ?>/assets/js/demo/datatables-demo.js"></script>
+
+<script>
+    $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2();
+
+        // LIGHTBOX
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true
+        });
+    });
+
+    $(".delete").click(function() {
+        let data = $(this).data("link");
+        let name = $(this).data("name");
+        $('.tombol-delete').attr("href", data);
+        $('#name').empty();
+        $('#name').append(name);
+        $('#modal-delete').modal('show');
+    });
+</script>

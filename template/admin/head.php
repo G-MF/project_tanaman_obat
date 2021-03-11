@@ -6,7 +6,7 @@
     <meta name="author" content="">
 
     <title>Obat Tradisional</title>
-    <link rel="shortcut icon" href="<?= base_url() ?>/assets/img/tanaman-obat.jpg">
+    <link rel="shortcut icon" href="<?= base_url() ?>/assets/img/logo1.png">
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url() ?>/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -14,4 +14,25 @@
 
     <!-- Custom styles for this template-->
     <link href="<?= base_url() ?>/assets/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <script src="<?= base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="<?= base_url() ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/select2/css/select2.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/select2/css/select2-bootstrap4.min.css">
+
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/sweetalert2/bootstrap-4.min.css">
+
+    <!-- Toastr -->
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/toastr/toastr.min.css">
+    <script src="<?= base_url() ?>/assets/toastr/toastr.min.js"></script>
+
+    <!-- Lightbox -->
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/lightbox/css/lightbox.css">
+
+    <!-- Datatables -->
+    <link href="<?= base_url() ?>/assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 </head>

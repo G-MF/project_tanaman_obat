@@ -1,11 +1,13 @@
 <ul class="navbar-nav bg-gray-900 sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+        <div class="sidebar-brand-icon">
+            <img src="<?= base_url('assets/img/logo1.png') ?>" style="width: 50px; height: 50px;">
         </div>
-        <div class="sidebar-brand-text mx-3">Obat Tradisional</div>
+        <div class=" sidebar-brand-text text-left mt-3 ml-2" style="font-size: 12px;">
+            Sistem Informasi <br> Obat Tradisional
+        </div>
     </a>
 
     <!-- Divider -->
@@ -28,7 +30,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="<?= base_url('admin/tanaman-obat') ?>">
             <i class="fas fa-fw fa-leaf"></i>
             <span>Tanaman Obat</span>
         </a>
@@ -50,6 +52,17 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
+
+    <div class="sidebar-heading">
+        Laporan
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            <i class="fas fa-fw fa-list"></i>
+            <span>Laporan</span>
+        </a>
+    </li>
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
