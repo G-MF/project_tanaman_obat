@@ -14,11 +14,12 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item <?= page_active('admin') ?>">
         <a class="nav-link" href="<?= base_url('admin') ?>">
             <i class="fas fa-fw fa-home"></i>
             <span>Home</span></a>
     </li>
+
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -29,21 +30,21 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    <li class="nav-item <?= page_active('kelompok-tanaman') ?>">
         <a class="nav-link" href="<?= base_url('admin/kelompok-tanaman') ?>">
             <i class="fas fa-fw fa-layer-group"></i>
             <span>Kelompok Tanaman</span>
         </a>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item <?= page_active('tanaman-obat') ?>">
         <a class="nav-link" href="<?= base_url('admin/tanaman-obat') ?>">
             <i class="fas fa-fw fa-leaf"></i>
             <span>Tanaman Obat</span>
         </a>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item <?= page_active('obat-tradisional') ?>">
         <a class="nav-link" href="<?= base_url('admin/obat-tradisional') ?>">
             <i class="fas fa-fw fa-pills"></i>
             <span>Obat</span>

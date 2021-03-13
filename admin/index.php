@@ -102,7 +102,19 @@
                     <div class="row">
 
                         <?php
-                        $foto_tanaman = $koneksi->query("SELECT * FROM tanaman_obat ORDER BY id_tanaman DESC");
+                        $batas         = 8;
+                        $halaman       = isset($_GET['halaman']) ? (int)$_GET['halaman'] : 1;
+                        $halaman_awal  = ($halaman > 1) ? ($halaman * $batas) - $batas : 0;
+
+                        $previous      = $halaman - 1;
+                        $next          = $halaman + 1;
+
+                        $data          = $koneksi->query("SELECT * FROM tanaman_obat");
+                        $jumlah_data   = mysqli_num_rows($data);
+                        $total_halaman = ceil($jumlah_data / $batas);
+
+                        $foto_tanaman  = $koneksi->query("SELECT * FROM tanaman_obat LIMIT $halaman_awal, $batas");
+                        $nomor         = $halaman_awal + 1;
                         foreach ($foto_tanaman as $item) :
                         ?>
                             <div class="col-sm-3 col-xl-3 mb-4 ahover">
@@ -118,6 +130,33 @@
                         <?php endforeach ?>
 
                     </div>
+
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item <?= $halaman < $total_halaman ? 'disabled' : '' ?>">
+                                <a class="page-link" <?php if ($halaman > 1) {
+                                                            echo "href='?halaman=$previous'";
+                                                        } ?>>Previous</a>
+                            </li>
+                            <?php
+                            $url = explode('=', $_SERVER['REQUEST_URI']);
+                            $get_url = end($url);
+
+                            for ($x = 1; $x <= $total_halaman; $x++) {
+                            ?>
+                                <li class="page-item <?= $x == $get_url ? 'active' : '' ?>">
+                                    <a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a>
+                                </li>
+                            <?php
+                            }
+                            ?>
+                            <li class="page-item <?= $halaman > 1 ? 'disabled' : '' ?>">
+                                <a class="page-link" <?php if ($halaman < $total_halaman) {
+                                                            echo "href='?halaman=$next'";
+                                                        } ?>>Next</a>
+                            </li>
+                        </ul>
+                    </nav>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -151,20 +190,18 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <dl class="row">
-                                <dt class="col-md-4">Nama Tanaman</dt>
-                                <dd class="col-md-8" id="nama_tanaman"></dd>
-                                <dt class="col-md-4">Deskripsi</dt>
-                                <dd class="col-md-8" id="deskripsi"></dd>
-                                <dt class="col-md-4">Indikasi</dt>
-                                <dd class="col-md-8" id="indikasi"></dd>
-                                <dt class="col-md-4">Kelompok</dt>
-                                <dd class="col-md-8" id="kelompok"></dd>
-                            </dl>
-                        </div>
-                        <div class="col-md-4 gambar"></div>
+                    <div class="col-md-12">
+                        <div class="gambar mb-3"></div>
+                        <dl class="row">
+                            <dt class="col-md-4">Nama Tanaman</dt>
+                            <dd class="col-md-8" id="nama_tanaman"></dd>
+                            <dt class="col-md-4">Deskripsi</dt>
+                            <dd class="col-md-8" id="deskripsi"></dd>
+                            <dt class="col-md-4">Indikasi</dt>
+                            <dd class="col-md-8" id="indikasi"></dd>
+                            <dt class="col-md-4">Kelompok</dt>
+                            <dd class="col-md-8" id="kelompok"></dd>
+                        </dl>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -191,7 +228,8 @@
                     $('#deskripsi').html(item.deskripsi);
                     $('#indikasi').html(item.indikasi);
                     $('#kelompok').html(item.kelompok);
-                    $('.gambar').append('<img src="<?= base_url() ?>/assets/gambar-tanaman/' + item.gambar_tanaman + '" style="width: 240px; height: 200px; border-radius: 25px;">');
+                    $('.gambar').empty();
+                    $('.gambar').append('<img src="<?= base_url() ?>/assets/gambar-tanaman/' + item.gambar_tanaman + '" style="width: 100%; height: 100%; border-radius: 25px;">');
                 });
         });
     </script>

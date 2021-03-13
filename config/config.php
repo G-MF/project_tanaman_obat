@@ -9,6 +9,18 @@ function base_url($url = null)
     }
 }
 
+function page_active($page_now)
+{
+    $url =  $_SERVER['REQUEST_URI'];
+    $ex  = explode('/', $url);
+    $co  = count($ex);
+    $page = $ex[$co - 2];
+
+    if ($page == $page_now) {
+        return 'active';
+    }
+}
+
 // KONEKSI DATABASE
 $host = "localhost";
 $user = "root";
