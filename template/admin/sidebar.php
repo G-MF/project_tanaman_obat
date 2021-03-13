@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gray-900 sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin') ?>">
         <div class="sidebar-brand-icon">
             <img src="<?= base_url('assets/img/logo1.png') ?>" style="width: 50px; height: 50px;">
         </div>
@@ -15,7 +15,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="<?= base_url('admin') ?>">
             <i class="fas fa-fw fa-home"></i>
             <span>Home</span></a>
     </li>
@@ -44,14 +44,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-mortar-pestle"></i>
-            <span>Komposisi Obat</span>
-        </a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="<?= base_url('admin/obat-tradisional') ?>">
             <i class="fas fa-fw fa-pills"></i>
             <span>Obat</span>
         </a>
