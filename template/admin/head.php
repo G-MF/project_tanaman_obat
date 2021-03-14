@@ -32,6 +32,9 @@
     <!-- Lightbox -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/lightbox/css/lightbox.css">
 
+    <!-- summernote -->
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/summernote/summernote-bs4.css">
+
     <!-- Datatables -->
     <link href="<?= base_url() ?>/assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 

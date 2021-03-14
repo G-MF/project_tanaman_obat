@@ -62,7 +62,7 @@
                                         <div class="form-group row">
                                             <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
                                             <div class="col-sm-10">
-                                                <textarea class="form-control" name="deskripsi" id="deskripsi" rows="3" required></textarea>
+                                                <textarea class="textarea" name="deskripsi" id="deskripsi" required style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group row">

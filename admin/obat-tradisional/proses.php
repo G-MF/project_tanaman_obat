@@ -5,11 +5,11 @@ include_once '../../template/admin/script.php';
 // Simpan
 if (isset($_POST['tambah'])) {
     $nama_obat    = strip_tags($_POST['nama_obat']);
-    $deskripsi    = preg_replace("/(\r|\n)/", " ", strip_tags($_POST['deskripsi']));
+    $deskripsi    = $_POST['deskripsi'];
     $indikasi     = preg_replace("/(\r|\n)/", " ", strip_tags($_POST['indikasi']));
     $aturan_pakai = strip_tags($_POST['aturan_pakai']);
     $nama_tanaman = strip_tags($_POST['nama_tanaman']);
-    $komposisi    = preg_replace("/(\r|\n)/", " ", strip_tags($_POST['komposisi']));
+    $komposisi    = $_POST['komposisi'];
 
     $submit = $koneksi->query("INSERT INTO obat VALUES (
         NULL, '$nama_obat', '$deskripsi', '$indikasi', '$aturan_pakai', '$nama_tanaman', '$komposisi'
@@ -25,11 +25,11 @@ if (isset($_POST['tambah'])) {
     if (isset($_POST['edit'])) {
         $id_obat      = strip_tags($_POST['id_obat']);
         $nama_obat    = strip_tags($_POST['nama_obat']);
-        $deskripsi    = preg_replace("/(\r|\n)/", " ", strip_tags($_POST['deskripsi']));
+        $deskripsi    = $_POST['deskripsi'];
         $indikasi     = preg_replace("/(\r|\n)/", " ", strip_tags($_POST['indikasi']));
         $aturan_pakai = strip_tags($_POST['aturan_pakai']);
         $nama_tanaman = strip_tags($_POST['nama_tanaman']);
-        $komposisi    = preg_replace("/(\r|\n)/", " ", strip_tags($_POST['komposisi']));
+        $komposisi    = $_POST['komposisi'];
 
         $submit = $koneksi->query("UPDATE obat SET
             nama_obat     = '$nama_obat', 

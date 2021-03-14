@@ -5,7 +5,7 @@ include_once '../../template/admin/script.php';
 // Simpan
 if (isset($_POST['tambah'])) {
     $nama_tanaman = strip_tags($_POST['nama_tanaman']);
-    $deskripsi    = strip_tags($_POST['deskripsi']);
+    $deskripsi    = $_POST['deskripsi'];
     $indikasi     = strip_tags($_POST['indikasi']);
     $kelompok     = strip_tags($_POST['kelompok']);
 
@@ -43,7 +43,7 @@ if (isset($_POST['tambah'])) {
     if (isset($_POST['edit'])) {
         $id_tanaman   = strip_tags($_POST['id_tanaman']);
         $nama_tanaman = strip_tags($_POST['nama_tanaman']);
-        $deskripsi    = strip_tags($_POST['deskripsi']);
+        $deskripsi    = $_POST['deskripsi'];
         $indikasi     = strip_tags($_POST['indikasi']);
         $kelompok     = strip_tags($_POST['kelompok']);
 

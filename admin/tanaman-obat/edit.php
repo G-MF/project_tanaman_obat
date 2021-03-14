@@ -69,7 +69,7 @@ $data = $koneksi->query("SELECT * FROM tanaman_obat WHERE id_tanaman = '$id'")->
                                         <div class="form-group row">
                                             <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
                                             <div class="col-sm-10">
-                                                <textarea class="form-control" name="deskripsi" id="deskripsi" rows="3" required><?= $data['deskripsi'] ?></textarea>
+                                                <textarea class="textarea" name="deskripsi" id="deskripsi" required style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?= $data['deskripsi'] ?></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group row">
