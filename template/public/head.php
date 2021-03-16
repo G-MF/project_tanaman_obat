@@ -24,5 +24,22 @@
 
             background-color: #D3E1E1;
         }
+
+        @media screen and (max-width: 1080px) {
+            .menu-top {
+                height: 4rem;
+            }
+
+            .gambar-top {
+                margin-top: 5px;
+                height: 50px;
+                width: 300px;
+            }
+
+            .login-top {
+                margin-top: -52px;
+                color: #48b461 !important;
+            }
+        }
     </style>
 </head>

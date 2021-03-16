@@ -1,20 +1,20 @@
 <?php
 require_once 'config/config.php';
 
-$batas         = 8;
+$batas         = 10;
 $halaman       = isset($_GET['halaman']) ? (int)$_GET['halaman'] : 1;
 $halaman_awal  = ($halaman > 1) ? ($halaman * $batas) - $batas : 0;
 
 $previous      = $halaman - 1;
 $next          = $halaman + 1;
 
-if (isset($_GET['jenis'])) {
-    $nama = $_GET['jenis'];
-    $data = $koneksi->query("SELECT * FROM tanaman_obat WHERE kelompok = '$nama'");
-    $foto_tanaman  = $koneksi->query("SELECT * FROM tanaman_obat WHERE kelompok = '$nama' LIMIT $halaman_awal, $batas");
+if (isset($_GET['obat'])) {
+    $nama = $_GET['obat'];
+    $data = $koneksi->query("SELECT * FROM obat WHERE nama_obat LIKE '%$nama%'");
+    $dataobat  = $koneksi->query("SELECT * FROM obat WHERE nama_obat LIKE '%$nama%' LIMIT $halaman_awal, $batas");
 } else {
-    $data = $koneksi->query("SELECT * FROM tanaman_obat");
-    $foto_tanaman  = $koneksi->query("SELECT * FROM tanaman_obat LIMIT $halaman_awal, $batas");
+    $data = $koneksi->query("SELECT * FROM obat");
+    $dataobat  = $koneksi->query("SELECT * FROM obat LIMIT $halaman_awal, $batas");
 }
 
 $jumlah_data   = mysqli_num_rows($data);
@@ -53,26 +53,10 @@ $nomor         = $halaman_awal + 1;
                 <div class="container">
                     <div class="row mb-4">
                         <div class="col-lg-12">
-                            <h1 class="m-0 text-dark">Galeri Tanaman Obat</h1>
+                            <h1 class="m-0 text-dark">Obat Tradisional</h1>
                         </div>
                     </div>
                     <?php include_once 'template/public/menu.php'; ?>
-                    <hr>
-                    <div class="row mb-2">
-                        <?php
-                        $jenis = $koneksi->query("SELECT * FROM kelompok_tanaman ORDER BY nama ASC");
-                        foreach ($jenis as $item) {
-                        ?>
-                            <div class="col-lg-4 mb-1">
-                                <form action="" method="GET">
-                                    <input type="hidden" name="jenis" value="<?= $item['nama'] ?>">
-                                    <button type="submit" class="btn bg-gradient-danger btn-block btn-xs font-weight-bold">
-                                        <?= $item['nama'] ?>
-                                    </button>
-                                </form>
-                            </div>
-                        <?php } ?>
-                    </div>
                 </div>
             </div>
             <!-- /.content-header -->
@@ -81,27 +65,32 @@ $nomor         = $halaman_awal + 1;
             <div class="content">
                 <div class="container">
 
-                    <?php if (isset($_GET['jenis'])) { ?>
-                        <h5>Jenis Tanaman : <?= "<u><i>" . $_GET['jenis'] . "</i></u>"; ?></h5>
-                    <?php } ?>
+                    <nav class="navbar justify-content-between pl-0 pr-0">
+                        <a class="navbar-brand">
+                            <?php if (isset($_GET['obat'])) { ?>
+                                Menampilkan Nama Obat : <u><i><?= $_GET['obat'] ?></i></u>
+                            <?php } ?>
+                        </a>
+                        <form class="form-inline" action="" method="GET">
+                            <input class="form-control mr-sm-2" type="search" name="obat" placeholder="Cari Nama Obat" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari</button>
+                        </form>
+                    </nav>
 
                     <div class="row">
-                        <?php
-                        foreach ($foto_tanaman as $item) :
-                        ?>
-                            <div class="col-sm-3 col-xl-3 mb-2 ahover">
-                                <a href="#" id="detail-tanaman" data-id="<?= $item['id_tanaman'] ?>">
-                                    <div class="card">
-                                        <img class="card-img-top" src="<?= base_url('assets/gambar-tanaman/' . $item['gambar_tanaman']) ?>" style="height: 180px;">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-gray-900" style="word-break: break-all;"><?= $item['nama_tanaman'] ?></h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        <?php endforeach ?>
+                        <div class="col-lg-12">
+                            <?php
+                            foreach ($dataobat as $item) :
+                            ?>
+                                <div class="list-group mb-1">
+                                    <a href="#" id="detail-obat" data-id="<?= $item['id_obat'] ?>" class="list-group-item list-group-item-action list-group-item-success">
+                                        <?= $item['nama_obat'] ?>
+                                    </a>
+                                </div>
+                            <?php endforeach ?>
+                        </div>
 
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 mt-3">
                             <nav>
                                 <ul class="pagination justify-content-center">
                                     <li class="page-item <?= $halaman < $total_halaman ? 'disabled' : '' ?>">
@@ -155,11 +144,11 @@ $nomor         = $halaman_awal + 1;
     <!-- ./wrapper -->
 
     <!-- Detail Modal-->
-    <div class="modal fade" id="modal-detail-tanaman" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modal-detail-obat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-gray-900 text-bold" id="exampleModalLabel">Detail Tanaman Obat</h5>
+                    <h5 class="modal-title text-gray-900 text-bold" id="exampleModalLabel">Detail Obat Tradisional</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -168,14 +157,18 @@ $nomor         = $halaman_awal + 1;
                     <div class="col-md-12">
                         <div class="gambar mb-3"></div>
                         <dl class="row">
-                            <dt class="col-md-4">Nama Tanaman</dt>
-                            <dd class="col-md-8" id="nama_tanaman"></dd>
+                            <dt class="col-md-4">Nama Obat</dt>
+                            <dd class="col-md-8" id="nama_obat"></dd>
                             <dt class="col-md-4">Deskripsi</dt>
                             <dd class="col-md-8" id="deskripsi"></dd>
                             <dt class="col-md-4">Indikasi</dt>
                             <dd class="col-md-8" id="indikasi"></dd>
-                            <dt class="col-md-4">Kelompok</dt>
-                            <dd class="col-md-8" id="kelompok"></dd>
+                            <dt class="col-md-4">Aturan Pakai</dt>
+                            <dd class="col-md-8" id="aturan_pakai"></dd>
+                            <dt class="col-md-4">Dari Tanaman</dt>
+                            <dd class="col-md-8" id="nama_tanaman"></dd>
+                            <dt class="col-md-4">Komposisi</dt>
+                            <dd class="col-md-8" id="komposisi"></dd>
                         </dl>
                     </div>
                 </div>
@@ -188,24 +181,25 @@ $nomor         = $halaman_awal + 1;
         </div>
     </div>
 
+
     <!-- REQUIRED SCRIPTS -->
     <?php include_once 'template/public/script.php'; ?>
 
     <script>
-        $(document).on('click', '#detail-tanaman', function(e) {
+        $(document).on('click', '#detail-obat', function(e) {
             e.preventDefault();
-            $("#modal-detail-tanaman").modal('show');
-            $.post('admin/detail.php', {
+            $("#modal-detail-obat").modal('show');
+            $.post('template/public/modal-detail-obat.php', {
                     id: $(this).attr('data-id')
                 },
                 function(data) {
                     let item = JSON.parse(data);
-                    $('#nama_tanaman').html(item.nama_tanaman);
+                    $('#nama_obat').html(item.nama_obat);
                     $('#deskripsi').html(item.deskripsi);
                     $('#indikasi').html(item.indikasi);
-                    $('#kelompok').html(item.kelompok);
-                    $('.gambar').empty();
-                    $('.gambar').append('<img src="<?= base_url() ?>/assets/gambar-tanaman/' + item.gambar_tanaman + '" style="width: 100%; height: 100%; border-radius: 25px;">');
+                    $('#aturan_pakai').html(item.aturan_pakai);
+                    $('#nama_tanaman').html(item.nama_tanaman);
+                    $('#komposisi').html(item.komposisi);
                 });
         });
     </script>
