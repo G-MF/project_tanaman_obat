@@ -1,5 +1,6 @@
 <?php
 require_once '../../config/config.php';
+include_once '../../config/auth-cek.php';
 $data = $koneksi->query("SELECT * FROM obat ORDER BY nama_obat ASC");
 ?>
 

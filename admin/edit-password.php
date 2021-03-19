@@ -1,5 +1,6 @@
 <?php
 require_once '../config/config.php';
+include_once '../config/auth-cek.php';
 require_once '../template/admin/script.php';
 
 if (isset($_POST['edit-pw'])) {
