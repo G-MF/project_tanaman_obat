@@ -59,7 +59,7 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-report">
             <i class="fas fa-fw fa-list"></i>
             <span>Laporan</span>
         </a>
