@@ -73,7 +73,7 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-edit-pw">
             <i class="fas fa-fw fa-lock"></i>
             <span>Ubah Password</span>
         </a>
