@@ -194,7 +194,7 @@ include_once '../config/auth-cek.php';
                 </div>
                 <div class="modal-body">
                     <div class="col-md-12">
-                        <div class="gambar mb-3"></div>
+                        <div class="gambar mb-3 justify-content-center text-center"></div>
                         <dl class="row">
                             <dt class="col-md-4">Nama Tanaman</dt>
                             <dd class="col-md-8" id="nama_tanaman"></dd>
@@ -232,7 +232,7 @@ include_once '../config/auth-cek.php';
                     $('#indikasi').html(item.indikasi);
                     $('#kelompok').html(item.kelompok);
                     $('.gambar').empty();
-                    $('.gambar').append('<img src="<?= base_url() ?>/assets/gambar-tanaman/' + item.gambar_tanaman + '" style="width: 100%; height: 100%; border-radius: 25px;">');
+                    $('.gambar').append('<img src="<?= base_url() ?>/assets/gambar-tanaman/' + item.gambar_tanaman + '" style="width: 70%; height: 70%; text-align: center; justify-content: center; border-radius: 25px;">');
                 });
         });
     </script>

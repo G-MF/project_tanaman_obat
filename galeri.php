@@ -89,12 +89,12 @@ $nomor         = $halaman_awal + 1;
                         <?php
                         foreach ($foto_tanaman as $item) :
                         ?>
-                            <div class="col-sm-3 col-xl-3 mb-2 ahover">
+                            <div class="col-sm-3 col-xl-3 mb-4 ahover">
                                 <a href="#" id="detail-tanaman" data-id="<?= $item['id_tanaman'] ?>">
                                     <div class="card">
                                         <img class="card-img-top" src="<?= base_url('assets/gambar-tanaman/' . $item['gambar_tanaman']) ?>" style="height: 180px;">
                                         <div class="card-body">
-                                            <h5 class="card-title text-gray-900" style="word-break: break-all;"><?= $item['nama_tanaman'] ?></h5>
+                                            <h5 class="card-title text-gray-900"><?= $item['nama_tanaman'] ?></h5>
                                         </div>
                                     </div>
                                 </a>
@@ -166,7 +166,7 @@ $nomor         = $halaman_awal + 1;
                 </div>
                 <div class="modal-body">
                     <div class="col-md-12">
-                        <div class="gambar mb-3"></div>
+                        <div class="gambar mb-3 text-center"></div>
                         <dl class="row">
                             <dt class="col-md-4">Nama Tanaman</dt>
                             <dd class="col-md-8" id="nama_tanaman"></dd>
@@ -205,7 +205,7 @@ $nomor         = $halaman_awal + 1;
                     $('#indikasi').html(item.indikasi);
                     $('#kelompok').html(item.kelompok);
                     $('.gambar').empty();
-                    $('.gambar').append('<img src="<?= base_url() ?>/assets/gambar-tanaman/' + item.gambar_tanaman + '" style="width: 100%; height: 100%; border-radius: 25px;">');
+                    $('.gambar').append('<img src="<?= base_url() ?>/assets/gambar-tanaman/' + item.gambar_tanaman + '" style="width: 70%; height: 70%; text-align: center; justify-content: center; border-radius: 25px;">');
                 });
         });
     </script>
