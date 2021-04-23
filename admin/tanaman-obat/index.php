@@ -57,6 +57,7 @@ include_once '../../config/auth-cek.php'; ?>
                                             <thead class="thead-light text-center">
                                                 <tr>
                                                     <th>No</th>
+                                                    <th>ID Tanaman</th>
                                                     <th>Nama Tanaman</th>
                                                     <th>Deskripsi</th>
                                                     <th>Indikasi</th>
@@ -72,6 +73,7 @@ include_once '../../config/auth-cek.php'; ?>
                                                 ?>
                                                     <tr>
                                                         <td align="center"><?= $no++; ?></td>
+                                                        <td align="center"><?= $row['kode_tanaman']; ?></td>
                                                         <td><?= $row['nama_tanaman']; ?></td>
                                                         <td><?= $row['deskripsi']; ?></td>
                                                         <td><?= $row['indikasi']; ?></td>

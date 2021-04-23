@@ -5,6 +5,7 @@ include_once '../../template/admin/script.php';
 
 // Simpan
 if (isset($_POST['tambah'])) {
+    $kode_obat    = $_POST['kode_obat'];
     $nama_obat    = strip_tags($_POST['nama_obat']);
     $deskripsi    = $_POST['deskripsi'];
     $indikasi     = preg_replace("/(\r|\n)/", " ", strip_tags($_POST['indikasi']));
@@ -13,7 +14,7 @@ if (isset($_POST['tambah'])) {
     $komposisi    = $_POST['komposisi'];
 
     $submit = $koneksi->query("INSERT INTO obat VALUES (
-        NULL, '$nama_obat', '$deskripsi', '$indikasi', '$aturan_pakai', '$nama_tanaman', '$komposisi'
+        NULL, '$kode_obat', '$nama_obat', '$deskripsi', '$indikasi', '$aturan_pakai', '$nama_tanaman', '$komposisi'
         )");
 
     if ($submit) {

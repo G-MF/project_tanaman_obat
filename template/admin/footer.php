@@ -37,15 +37,55 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body text-center">
+            <div class="modal-body">
                 <div class="list-group">
-                    <a href="<?= base_url('admin/laporan/tanaman-obat') ?>" target="blank" class="list-group-item list-group-item-action list-group-item-info mb-3" aria-current="true">
-                        Tanaman Obat
-                    </a>
-                    <a href="<?= base_url('admin/laporan/obat-tradisional') ?>" target="blank" class="list-group-item list-group-item-action list-group-item-success" aria-current="true">
+
+                    <div class="accordion mb-3" id="accordionExample">
+                        <div class="card">
+                            <button class="list-group-item list-group-item-action list-group-item-info text-center" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Tanaman Obat
+                            </button>
+
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <form action="<?= base_url('admin/laporan/tanaman-obat') ?>" method="POST" target="_blank">
+                                        <div class="form-group">
+                                            <label for="kelompok">Cetak Berdasarkan Kelompok</label>
+                                            <select class="form control select2" name="kelompok" id="kelompok" data-placeholder="Pilih" style="width: 100%;">
+                                                <option value=""></option>
+                                                <?php
+                                                $kel = $koneksi->query("SELECT * FROM kelompok_tanaman ORDER BY id_kelompok DESC");
+                                                foreach ($kel as $item) {
+                                                ?>
+                                                    <option value="<?= $item['nama'] ?>"><?= $item['nama'] ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <button type="submit" name="cetak" class="btn bg-gradient-primary btn-icon-split">
+                                            <span class="icon text-white">
+                                                <i class="fas fa-print"></i>
+                                            </span>
+                                            <span class="text text-white">Cetak</span>
+                                        </button>
+                                        <button type="submit" name="cetak_semua" class="btn bg-gradient-info btn-icon-split">
+                                            <span class="icon text-white">
+                                                <i class="fas fa-print"></i>
+                                            </span>
+                                            <span class="text text-white">Cetak Semua Data</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="<?= base_url('admin/laporan/obat-tradisional') ?>" target="blank" class="list-group-item list-group-item-action list-group-item-success text-center" aria-current="true">
                         Obat Tradisional
                     </a>
+
                 </div>
+
+
             </div>
             <div class="modal-footer justify-content-center">
                 <button class="btn bg-gradient-dark text-white btn-block" type="button" data-dismiss="modal">

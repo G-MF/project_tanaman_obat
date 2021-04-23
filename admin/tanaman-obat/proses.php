@@ -5,6 +5,7 @@ include_once '../../template/admin/script.php';
 
 // Simpan
 if (isset($_POST['tambah'])) {
+    $kode_tanaman = $_POST['kode_tanaman'];
     $nama_tanaman = strip_tags($_POST['nama_tanaman']);
     $deskripsi    = $_POST['deskripsi'];
     $indikasi     = strip_tags($_POST['indikasi']);
@@ -30,7 +31,7 @@ if (isset($_POST['tambah'])) {
     }
 
     $submit = $koneksi->query("INSERT INTO tanaman_obat VALUES (
-        NULL, '$nama_tanaman', '$deskripsi', '$indikasi', '$nama_gambar', '$kelompok'
+        NULL, '$kode_tanaman', '$nama_tanaman', '$deskripsi', '$indikasi', '$nama_gambar', '$kelompok'
     )");
 
     if ($submit) {

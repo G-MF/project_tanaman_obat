@@ -56,7 +56,7 @@ include_once '../../config/auth-cek.php'; ?>
                                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                             <thead class="thead-light text-center">
                                                 <tr>
-                                                    <th>No</th>
+                                                    <th>ID</th>
                                                     <th>Nama Kelompok Tanaman</th>
                                                     <th>Opsi</th>
                                                 </tr>
@@ -67,7 +67,7 @@ include_once '../../config/auth-cek.php'; ?>
                                                 foreach ($data as $row) {
                                                 ?>
                                                     <tr>
-                                                        <td align="center"><?= $no++; ?></td>
+                                                        <td align="center"><?= $row['id_kelompok']; ?></td>
                                                         <td><?= $row['nama']; ?></td>
                                                         <td align="center">
                                                             <a href="edit?id=<?= $row['id_kelompok'] ?>" class="btn bg-gradient-success btn-sm btn-icon-split">

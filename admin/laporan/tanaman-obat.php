@@ -1,7 +1,13 @@
 <?php
 require_once '../../config/config.php';
 include_once '../../config/auth-cek.php';
-$data = $koneksi->query("SELECT * FROM tanaman_obat ORDER BY nama_tanaman ASC");
+
+if (isset($_POST['cetak'])) {
+    $kelompok = $_POST['kelompok'];
+    $data     = $koneksi->query("SELECT * FROM tanaman_obat WHERE kelompok = '$kelompok' ORDER BY nama_tanaman ASC");
+} else {
+    $data  = $koneksi->query("SELECT * FROM tanaman_obat ORDER BY nama_tanaman ASC");
+}
 ?>
 
 <!DOCTYPE html>
@@ -58,12 +64,17 @@ $data = $koneksi->query("SELECT * FROM tanaman_obat ORDER BY nama_tanaman ASC");
 
     <div class="judul">
         Laporan Tanaman Obat
+        <?php if (isset($_POST['cetak'])) : ?>
+            <br>
+            <small style="text-decoration: underline; font-size: 20px;"><?= $kelompok; ?></small>
+        <?php endif; ?>
     </div>
 
     <table border="1">
         <thead>
             <tr>
                 <th>No</th>
+                <th>ID Tanaman</th>
                 <th>Nama Tanaman</th>
                 <th>Deskripsi</th>
                 <th>Indikasi</th>
@@ -77,6 +88,7 @@ $data = $koneksi->query("SELECT * FROM tanaman_obat ORDER BY nama_tanaman ASC");
             ?>
                 <tr>
                     <td align="center"><?= $no++; ?></td>
+                    <td align="center"><?= $row['kode_tanaman']; ?></td>
                     <td><?= $row['nama_tanaman']; ?></td>
                     <td><?= $row['deskripsi']; ?></td>
                     <td><?= $row['indikasi']; ?></td>

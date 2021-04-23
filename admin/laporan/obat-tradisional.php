@@ -64,11 +64,12 @@ $data = $koneksi->query("SELECT * FROM obat ORDER BY nama_obat ASC");
         <thead>
             <tr>
                 <th>No</th>
+                <th>ID Obat</th>
                 <th>Nama Obat</th>
                 <th>Deskripsi</th>
                 <th>Indikasi</th>
                 <th>Aturan Pakai</th>
-                <th>Dari Tanaman Obat</th>
+                <th>Nama Tanaman</th>
                 <th>Komposisi</th>
             </tr>
         </thead>
@@ -78,6 +79,7 @@ $data = $koneksi->query("SELECT * FROM obat ORDER BY nama_obat ASC");
             ?>
                 <tr>
                     <td align="center"><?= $no++; ?></td>
+                    <td align="center"><?= $row['kode_obat']; ?></td>
                     <td><?= $row['nama_obat']; ?></td>
                     <td align="justify"><?= $row['deskripsi']; ?></td>
                     <td><?= $row['indikasi']; ?></td>

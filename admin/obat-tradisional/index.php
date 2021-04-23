@@ -59,9 +59,10 @@ include_once '../../config/auth-cek.php';
                                             <thead class="thead-light text-center">
                                                 <tr>
                                                     <th>No</th>
+                                                    <th>ID Obat</th>
                                                     <th>Nama Obat</th>
                                                     <th>Deskripsi</th>
-                                                    <th>Tanaman Obat</th>
+                                                    <th>Nama Tanaman</th>
                                                     <th>Opsi</th>
                                                 </tr>
                                             </thead>
@@ -72,6 +73,7 @@ include_once '../../config/auth-cek.php';
                                                 ?>
                                                     <tr>
                                                         <td align="center"><?= $no++; ?></td>
+                                                        <td align="center"><?= $row['kode_obat']; ?></td>
                                                         <td><?= $row['nama_obat']; ?></td>
                                                         <td align="justify"><?= $row['deskripsi']; ?></td>
                                                         <td><?= $row['nama_tanaman']; ?></td>

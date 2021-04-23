@@ -1,6 +1,15 @@
 <?php 
 require_once '../../config/config.php'; 
 include_once '../../config/auth-cek.php';
+
+$query1 = $koneksi->query("SELECT max(kode_obat) AS no FROM obat");
+$data   = $query1->fetch_array();
+$no     = $data['no'];
+
+$nourut = (int) substr($no, 2, 3);
+$nourut++;
+
+$kodeotomatis = "B" . sprintf('%03s', $nourut);
 ?>
 
 <!DOCTYPE html>
@@ -56,6 +65,12 @@ include_once '../../config/auth-cek.php';
                                 <div class="card shadow mb-4">
                                     <div class="card-body">
 
+                                    <div class="form-group row">
+                                            <label for="kode_obat" class="col-sm-2 col-form-label">ID Obat</label>
+                                            <div class="col-sm-10">
+                                                <input autocomplete="off" type="text" class="form-control" name="kode_obat" id="kode_obat" required readonly value="<?= $kodeotomatis ?>">
+                                            </div>
+                                        </div>
                                         <div class="form-group row">
                                             <label for="nama_obat" class="col-sm-2 col-form-label">Nama Obat</label>
                                             <div class="col-sm-10">
