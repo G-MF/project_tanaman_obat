@@ -195,7 +195,7 @@ $nomor         = $halaman_awal + 1;
         $(document).on('click', '#detail-tanaman', function(e) {
             e.preventDefault();
             $("#modal-detail-tanaman").modal('show');
-            $.post('admin/detail.php', {
+            $.post('detail.php', {
                     id: $(this).attr('data-id')
                 },
                 function(data) {
