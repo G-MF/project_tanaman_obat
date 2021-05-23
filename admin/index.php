@@ -203,7 +203,7 @@ include_once '../config/auth-cek.php';
                             <dt class="col-md-4">Indikasi</dt>
                             <dd class="col-md-8" id="indikasi"></dd>
                             <dt class="col-md-4">Kelompok</dt>
-                            <dd class="col-md-8" id="kelompok"></dd>
+                            <dd class="col-md-8" id="kel"></dd>
                         </dl>
                     </div>
                 </div>
@@ -230,7 +230,7 @@ include_once '../config/auth-cek.php';
                     $('#nama_tanaman').html(item.nama_tanaman);
                     $('#deskripsi').html(item.deskripsi);
                     $('#indikasi').html(item.indikasi);
-                    $('#kelompok').html(item.kelompok);
+                    $('#kel').html(item.kelompok);
                     $('.gambar').empty();
                     $('.gambar').append('<img src="<?= base_url() ?>/assets/gambar-tanaman/' + item.gambar_tanaman + '" style="width: 70%; height: 70%; text-align: center; justify-content: center; border-radius: 25px;">');
                 });
