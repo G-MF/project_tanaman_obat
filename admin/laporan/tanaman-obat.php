@@ -8,6 +8,27 @@ if (isset($_POST['cetak'])) {
 } else {
     $data  = $koneksi->query("SELECT * FROM tanaman_obat ORDER BY nama_tanaman ASC");
 }
+
+function tgl_indo($tanggal)
+{
+    $bulan = array(
+        1 =>   'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+    );
+    $pecahkan = explode('-', $tanggal);
+
+    return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
+}
 ?>
 
 <!DOCTYPE html>
@@ -43,6 +64,7 @@ if (isset($_POST['cetak'])) {
         table {
             width: 100%;
             margin-top: 15px;
+            border-collapse: collapse;
         }
 
         th {
@@ -99,6 +121,23 @@ if (isset($_POST['cetak'])) {
                 </tr>
             <?php } ?>
         </tbody>
+    </table>
+
+    <br>
+
+    <table border="0">
+        <tr>
+            <td width="80%"></td>
+            <td>
+                Banjarmasin, <?= tgl_indo(date('Y-m-d')) ?> <br><br>
+                Mengetahui <br>
+                Kepala Dinas <br><br>
+
+                Nama :
+                <hr style="margin-top: 0px; margin-bottom: 0px; border-top: 1px solid #000; border-bottom: white; border-left: white; border-right: white;">
+                NIP &nbsp;&nbsp; :
+            </td>
+        </tr>
     </table>
 
 

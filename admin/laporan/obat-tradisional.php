@@ -2,6 +2,27 @@
 require_once '../../config/config.php';
 include_once '../../config/auth-cek.php';
 $data = $koneksi->query("SELECT * FROM obat ORDER BY nama_obat ASC");
+
+function tgl_indo($tanggal)
+{
+    $bulan = array(
+        1 =>   'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+    );
+    $pecahkan = explode('-', $tanggal);
+
+    return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,6 +58,7 @@ $data = $koneksi->query("SELECT * FROM obat ORDER BY nama_obat ASC");
         table {
             width: 100%;
             margin-top: 15px;
+            border-collapse: collapse;
         }
 
         th {
@@ -91,6 +113,22 @@ $data = $koneksi->query("SELECT * FROM obat ORDER BY nama_obat ASC");
         </tbody>
     </table>
 
+    <br>
+
+    <table border="0">
+        <tr>
+            <td width="80%"></td>
+            <td>
+                Banjarmasin, <?= tgl_indo(date('Y-m-d')) ?> <br><br>
+                Mengetahui <br>
+                Kepala Dinas <br><br>
+
+                Nama :
+                <hr style="margin-top: 0px; margin-bottom: 0px; border-top: 1px solid #000; border-bottom: white; border-left: white; border-right: white;">
+                NIP &nbsp;&nbsp; :
+            </td>
+        </tr>
+    </table>
 
 </body>
 
